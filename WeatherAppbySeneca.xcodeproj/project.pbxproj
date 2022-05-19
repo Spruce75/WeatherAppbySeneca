@@ -13,6 +13,10 @@
 		04D4EC1F278EE4D800588FEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D4EC1D278EE4D800588FEB /* Main.storyboard */; };
 		04D4EC21278EE4DC00588FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D4EC20278EE4DC00588FEB /* Assets.xcassets */; };
 		04D4EC24278EE4DC00588FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D4EC22278EE4DC00588FEB /* LaunchScreen.storyboard */; };
+		04D4EC32278F72EC00588FEB /* ViewController+AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4EC31278F72EC00588FEB /* ViewController+AlertController.swift */; };
+		04D4EC3B27934AE100588FEB /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4EC3A27934AE100588FEB /* ApiManager.swift */; };
+		04DB2DC728350E70009E628F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB2DC628350E70009E628F /* NetworkManager.swift */; };
+		04DB2DC928366F6E009E628F /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB2DC828366F6E009E628F /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		04D4EC20278EE4DC00588FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D4EC23278EE4DC00588FEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D4EC25278EE4DC00588FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04D4EC31278F72EC00588FEB /* ViewController+AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+AlertController.swift"; sourceTree = "<group>"; };
+		04D4EC3A27934AE100588FEB /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		04DB2DC628350E70009E628F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		04DB2DC828366F6E009E628F /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,75 @@
 		04D4EC16278EE4D800588FEB /* WeatherAppbySeneca */ = {
 			isa = PBXGroup;
 			children = (
-				04D4EC17278EE4D800588FEB /* AppDelegate.swift */,
-				04D4EC19278EE4D800588FEB /* SceneDelegate.swift */,
-				04D4EC1B278EE4D800588FEB /* ViewController.swift */,
-				04D4EC1D278EE4D800588FEB /* Main.storyboard */,
-				04D4EC20278EE4DC00588FEB /* Assets.xcassets */,
-				04D4EC22278EE4DC00588FEB /* LaunchScreen.storyboard */,
-				04D4EC25278EE4DC00588FEB /* Info.plist */,
+				04D4EC33279184E000588FEB /* Managers */,
+				04D4EC30278F729A00588FEB /* Extensions */,
+				04D4EC2F278EE58000588FEB /* Models */,
+				04D4EC2B278EE4E600588FEB /* ViewControllers */,
+				04D4EC2C278EE4FD00588FEB /* Storyboards */,
+				04D4EC2D278EE50C00588FEB /* Sources */,
+				04D4EC2E278EE51D00588FEB /* Supportings */,
 			);
 			path = WeatherAppbySeneca;
+			sourceTree = "<group>";
+		};
+		04D4EC2B278EE4E600588FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04D4EC1B278EE4D800588FEB /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		04D4EC2C278EE4FD00588FEB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				04D4EC1D278EE4D800588FEB /* Main.storyboard */,
+				04D4EC22278EE4DC00588FEB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		04D4EC2D278EE50C00588FEB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				04D4EC20278EE4DC00588FEB /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		04D4EC2E278EE51D00588FEB /* Supportings */ = {
+			isa = PBXGroup;
+			children = (
+				04D4EC17278EE4D800588FEB /* AppDelegate.swift */,
+				04D4EC19278EE4D800588FEB /* SceneDelegate.swift */,
+				04D4EC25278EE4DC00588FEB /* Info.plist */,
+			);
+			path = Supportings;
+			sourceTree = "<group>";
+		};
+		04D4EC2F278EE58000588FEB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04DB2DC828366F6E009E628F /* WeatherModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04D4EC30278F729A00588FEB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04D4EC31278F72EC00588FEB /* ViewController+AlertController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04D4EC33279184E000588FEB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				04DB2DC628350E70009E628F /* NetworkManager.swift */,
+				04D4EC3A27934AE100588FEB /* ApiManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DB2DC728350E70009E628F /* NetworkManager.swift in Sources */,
 				04D4EC1C278EE4D800588FEB /* ViewController.swift in Sources */,
+				04D4EC32278F72EC00588FEB /* ViewController+AlertController.swift in Sources */,
+				04DB2DC928366F6E009E628F /* WeatherModel.swift in Sources */,
+				04D4EC3B27934AE100588FEB /* ApiManager.swift in Sources */,
 				04D4EC18278EE4D800588FEB /* AppDelegate.swift in Sources */,
 				04D4EC1A278EE4D800588FEB /* SceneDelegate.swift in Sources */,
 			);
@@ -286,12 +358,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KGB5T28U9V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherAppbySeneca/Info.plist;
+				INFOPLIST_FILE = WeatherAppbySeneca/Supportings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -314,12 +385,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KGB5T28U9V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherAppbySeneca/Info.plist;
+				INFOPLIST_FILE = WeatherAppbySeneca/Supportings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
