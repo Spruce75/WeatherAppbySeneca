@@ -32,7 +32,7 @@ class NetworkManager {
     static let shared = NetworkManager()
 
     func fetchCurrentWeather(for city: String, completion: @escaping(Result<Weather, NetworkError>) -> Void) {
-        let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&apikey=\(ApiManager.shared.apiKey)"
+        let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&apikey=\(ApiManager.shared.apiKey)&units=metric"
         guard let stringUrl = URL(string: apiUrl) else { return }
 
         URLSession.shared.dataTask(with: stringUrl) { data, response, error in
@@ -45,7 +45,6 @@ class NetworkManager {
                 let weatherData = try JSONDecoder().decode(Weather.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(weatherData))
-                    print(weatherData)
                 }
             } catch let error {
                 completion(.failure(.someError(message: error.localizedDescription)))

@@ -11,12 +11,25 @@ struct Weather: Codable {
     let name: String?
     let weather: [WeatherDescription]?
     let main: WeatherDetails?
-    
 }
 
 struct WeatherDescription: Codable {
     let id: Int?
     let description: String?
+    
+    var systemIconNameString: String {
+        guard let id = id else { return ""}
+        switch id {
+        case 200...232: return "cloud.bolt.rain.fill"
+        case 300...321: return "cloud.drizzle.fill"
+        case 500...531: return "cloud.rain.fill"
+        case 600...622: return "cloud.snow.fill"
+        case 701...781: return "smoke.fill"
+        case 800: return "sun.min.fill"
+        case 801...804: return "cloud.fill"
+        default: return "nosign"
+        }
+    }
 }
 
 struct WeatherDetails: Codable {
@@ -33,10 +46,12 @@ struct WeatherDetails: Codable {
     }
     
     var temperature: String {
-        "\(temp?.rounded() ?? 0)"
+        guard let temp = temp else { return ""}
+        return String(format: "%.0f", temp)
     }
     
     var feelsLikeTemp: String {
-        "\(feelsLike?.rounded() ?? 0)"
+        guard let feelsLike = feelsLike else { return ""}
+        return String(format: "%.0f", feelsLike)
     }
 }
