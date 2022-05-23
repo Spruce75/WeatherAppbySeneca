@@ -21,6 +21,8 @@ class NetworkManager {
     private init() {}
     static let shared = NetworkManager()
     
+    var onCompletion: ((Weather) -> Void)?
+    
     func fetchCurrentWeather(forRequestType requestType: RequestType, completion: @escaping(Result<Weather, NetworkError>) -> Void) {
         var apiUrl = ""
         switch requestType {

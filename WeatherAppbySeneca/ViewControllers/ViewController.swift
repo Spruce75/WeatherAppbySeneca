@@ -43,13 +43,12 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
         }
     }
 
-        
     func updateInterfaceElements() {
         cityLabel.text = self.weather?.name
         temperatureLabel.text = self.weather?.main?.temperature
@@ -74,10 +73,10 @@ extension ViewController: CLLocationManagerDelegate {
                 self?.updateInterfaceElements()
             }
         }
+    }
         
         func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
             print(error.localizedDescription)
         }
-    }
     
 }
