@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     @IBAction func searchPressed(_ sender: UIButton) {
         showAlert(title: "Enter city name", message: nil) { city in
-            NetworkManager.shared.fetchCurrentWeather(forRequestType: .cityName(city: city)) { [weak self] results in
+            NetworkManager.shared.fetchCurrentWeather(forRequestType: .cityName(cityName: city)) { [weak self] results in
                 switch results {
                 case .failure(let error):
                     print(error.localizedDescription)

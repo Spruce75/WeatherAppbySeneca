@@ -13,7 +13,7 @@ enum NetworkError: Error {
 }
 
 enum RequestType {
-    case cityName(city: String)
+    case cityName(cityName: String)
     case coordinate(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
 }
 
