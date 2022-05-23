@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     @IBAction func searchPressed(_ sender: UIButton) {
         showAlert(title: "Enter city name", message: nil) { city in
-            NetworkManager.shared.fetchCurrentWeather(for: city) { [weak self] results in
+            NetworkManager.shared.fetchCurrentWeather(forRequestType: .cityName(city: city)) { [weak self] results in
                 switch results {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -43,15 +43,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-//        NetworkManager.shared.fetchCurrentWeather(for: "Helsinki") { [weak self] results in
-//            switch results {
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            case .success(let weather):
-//                self?.weather = weather
-//                self?.updateInterfaceElements()
-//            }
-//        }
+
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
         }
@@ -72,10 +64,20 @@ extension ViewController: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
+        
+        NetworkManager.shared.fetchCurrentWeather(forRequestType: .coordinate(latitude: latitude, longitude: longitude)) { [weak self] results in
+            switch results {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let weather):
+                self?.weather = weather
+                self?.updateInterfaceElements()
+            }
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print(error.localizedDescription)
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
-    }
 }
-
