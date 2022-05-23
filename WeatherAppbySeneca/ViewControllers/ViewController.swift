@@ -43,14 +43,17 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        NetworkManager.shared.fetchCurrentWeather(for: "Helsinki") { [weak self] results in
-            switch results {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let weather):
-                self?.weather = weather
-                self?.updateInterfaceElements()
-            }
+//        NetworkManager.shared.fetchCurrentWeather(for: "Helsinki") { [weak self] results in
+//            switch results {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let weather):
+//                self?.weather = weather
+//                self?.updateInterfaceElements()
+//            }
+//        }
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestLocation()
         }
     }
 
@@ -65,6 +68,14 @@ class ViewController: UIViewController {
 
 //MARK: - CLLocationManagerDelegate
 extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+    }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
 }
 
