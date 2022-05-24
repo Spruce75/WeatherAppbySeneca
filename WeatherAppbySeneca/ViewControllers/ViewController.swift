@@ -33,7 +33,7 @@ class ViewController: UIViewController {
                     print(error.localizedDescription)
                 case .success(let weather):
                     self?.weather = weather
-                    self?.updateInterfaceElements()
+                    self?.updateInterfaceElements(weather: weather)
 //                    self?.cityLabel.text = weather.name
 //                    self?.temperatureLabel.text = weather.main?.temperature
 //                    self?.feelsLikeTemperatureLabel.text = weather.main?.feelsLikeTemp
@@ -49,10 +49,10 @@ class ViewController: UIViewController {
         }
     }
 
-    func updateInterfaceElements() {
-        cityLabel.text = self.weather?.name
-        temperatureLabel.text = self.weather?.main?.temperature
-        feelsLikeTemperatureLabel.text = self.weather?.main?.feelsLikeTemp
+    func updateInterfaceElements(weather: Weather) {
+        cityLabel.text = weather.name
+        temperatureLabel.text = weather.main?.temperature
+        feelsLikeTemperatureLabel.text = weather.main?.feelsLikeTemp
         weatherIconImageView.image = UIImage(systemName: self.weather?.weather?.first?.systemIconNameString ?? "")
     }
 }
@@ -70,7 +70,7 @@ extension ViewController: CLLocationManagerDelegate {
                 print(error.localizedDescription)
             case .success(let weather):
                 self?.weather = weather
-                self?.updateInterfaceElements()
+                self?.updateInterfaceElements(weather: weather)
             }
         }
     }
