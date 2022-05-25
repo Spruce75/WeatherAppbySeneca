@@ -34,9 +34,6 @@ class ViewController: UIViewController {
                 case .success(let weather):
                     self?.weather = weather
                     self?.updateInterfaceElements(weather: weather)
-//                    self?.cityLabel.text = weather.name
-//                    self?.temperatureLabel.text = weather.main?.temperature
-//                    self?.feelsLikeTemperatureLabel.text = weather.main?.feelsLikeTemp
                 }
             }
         }
